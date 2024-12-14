@@ -34,7 +34,7 @@ IDE: IntelliJ IDEA, Eclipse, or any other Java IDE.
 
 # How to Run the Project
 Clone the repository:
-git clone https://github.com/mahesh2214/student-course-management.git
+git clone [https://github.com/mahesh2214/student-course-management.git](https://github.com/Mahesh2214/Student-and-Course-Management)
 Open the project in your favorite IDE.
 Add the MySQL Connector JAR file to the project's classpath.
 Compile and run the RoleBasedAccess class to start the application.

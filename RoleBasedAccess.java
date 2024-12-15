@@ -142,7 +142,7 @@ public class RoleBasedAccess {
     // Delete Students and Handle Course Implications
     public static void deleteStudent(int studentId) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             String deleteQuery = "DELETE FROM Student WHERE student_id = ?";
             PreparedStatement stmt = conn.prepareStatement(deleteQuery);
             stmt.setInt(1, studentId);

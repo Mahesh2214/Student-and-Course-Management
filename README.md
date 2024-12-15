@@ -1,6 +1,14 @@
 # Student-and-Course-Management
 This is a Java-based project for managing student information and course enrollments. The application includes functionality for user authentication, adding student details, viewing student details, managing course enrollments, and an admin dashboard for advanced operations.
 
+# Login Password
+  1)Student Login
+      Username = student
+      password = student123
+   2)Admin Login
+      Username = admin
+      password = admin123    
+
 # Features
 User Authentication
 Login functionality for students.

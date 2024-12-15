@@ -1,4 +1,3 @@
-package backend;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -91,7 +90,7 @@ public class RoleBasedAccess {
     // Retrieve Students Enrolled in a Specific Course
     public static void fetchStudentsByCourse(int courseId) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {   //Enter your database user_Name and your_Password
             String query = "SELECT student_id, student_name, student_email FROM Student WHERE course_id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, courseId);

@@ -15,7 +15,7 @@ public class RoleBasedAccess {
 
     private static void setupDatabase() {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             Statement stmt = conn.createStatement();
 
             // Create Course Table
@@ -42,7 +42,7 @@ public class RoleBasedAccess {
     // Add Student with Course Assignment
     public static void addStudent(String studentName, String studentEmail, int courseId) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             String validateCourseQuery = "SELECT * FROM Course WHERE course_id = ?";
             PreparedStatement validateStmt = conn.prepareStatement(validateCourseQuery);
             validateStmt.setInt(1, courseId);
@@ -69,7 +69,7 @@ public class RoleBasedAccess {
     // Retrieve Student Details with Course Information
     public static void fetchAllStudents() {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             String query = "SELECT s.student_id, s.student_name, s.student_email, c.course_name FROM Student s " +
                     "LEFT JOIN Course c ON s.course_id = c.course_id";
             Statement stmt = conn.createStatement();
@@ -90,7 +90,7 @@ public class RoleBasedAccess {
     // Retrieve Students Enrolled in a Specific Course
     public static void fetchStudentsByCourse(int courseId) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {   //Enter your database user_Name and your_Password
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {   //Enter your database user_Name and your_Password 
             String query = "SELECT student_id, student_name, student_email FROM Student WHERE course_id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setInt(1, courseId);
@@ -110,7 +110,7 @@ public class RoleBasedAccess {
     // Update Student Details with Course Modification
     public static void updateStudent(int studentId, String newName, String newEmail, int newCourseId) {
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             conn.setAutoCommit(false);
 
             String validateCourseQuery = "SELECT * FROM Course WHERE course_id = ?";
@@ -271,7 +271,7 @@ class AdminDashboard extends JFrame {
             }
 
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                 String query = "INSERT INTO Course (course_name, course_code, course_duration) VALUES (?, ?, ?)";
                 PreparedStatement stmt = conn.prepareStatement(query);
                 stmt.setString(1, courseName);
@@ -308,7 +308,7 @@ class AdminDashboard extends JFrame {
         JTable studentTable = new JTable(tableModel);
 
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
             String query = "SELECT s.student_id, s.student_name, s.student_email, c.course_name FROM Student s " +
                     "LEFT JOIN Course c ON s.course_id = c.course_id";
             Statement stmt = conn.createStatement();
@@ -375,7 +375,7 @@ class AdminDashboard extends JFrame {
                 }
 
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                     String updateQuery = "UPDATE Student SET student_name = ?, student_email = ? WHERE student_id = ?";
                     PreparedStatement stmt = conn.prepareStatement(updateQuery);
                     stmt.setString(1, updatedName); // Set new name
@@ -413,7 +413,7 @@ class AdminDashboard extends JFrame {
                     "Are you sure you want to delete this student?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                     String deleteQuery = "DELETE FROM Student WHERE student_id = ?";
                     PreparedStatement stmt = conn.prepareStatement(deleteQuery);
                     stmt.setInt(1, studentId);
@@ -484,7 +484,7 @@ class AdminDashboard extends JFrame {
 
             // Fetch courses and populate the combo box
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                 String query = "SELECT course_id, course_name FROM Course";
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -608,7 +608,7 @@ class AdminDashboard extends JFrame {
                 }
 
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                        "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                     String query = "INSERT INTO Student (student_name, student_email, course_id) VALUES (?, ?, ?)";
                     PreparedStatement stmt = conn.prepareStatement(query);
                     stmt.setString(1, name);
@@ -636,7 +636,7 @@ class AdminDashboard extends JFrame {
 
         private void showAvailableCourses() {
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@2214")) {
+                    "jdbc:mysql://localhost:3306/student_course_db?user=root&password=Mahesh@123")) {
                 String query = "SELECT course_name, course_code, course_duration FROM Course";
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
